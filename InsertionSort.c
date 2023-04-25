@@ -2,7 +2,7 @@
 #include <conio.h>
 void readArray(int n, int array[n])
 {
-    printf("Enter the array elements:\n");
+    printf("\nEnter the array elements :\n");
     for (int i = 0; i < n; i++)
     {
         scanf("%d", &array[i]);
@@ -10,10 +10,9 @@ void readArray(int n, int array[n])
 }
 void displayArray(int n, int array[n])
 {
-    printf("The array elements are as follows: ");
     for (int i = 0; i < n; i++)
     {
-        printf("%d ", array[i]);
+        printf("%d\t", array[i]);
     }
 }
 void insertionSort(int n, int array[n])
@@ -28,19 +27,20 @@ void insertionSort(int n, int array[n])
             i = i - 1;
         }
         array[i + 1] = key;
-        printf("Pass Number %d : ", i);
+        printf("\n\nPass Number %d : ", j);
         displayArray(n, array);
     }
 }
 void main()
 {
     int n;
-    int array[n];
     printf("Enter the array size: ");
     scanf("%d", &n);
+    int array[n];
     readArray(n, array);
-    printf("\nBefore swapping the array elements: \n");
+    printf("\nBefore swapping the array elements are as follows:\n");
     displayArray(n, array);
     insertionSort(n, array);
+    printf("\n\nAfter swapping the array elements are as follows:\n");
     displayArray(n, array);
 }
