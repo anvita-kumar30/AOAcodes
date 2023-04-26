@@ -1,49 +1,56 @@
 #include <stdio.h>
 #include <math.h>
 int A[10];
-int B[10];
 int n;
 int count;
 void input(int size)
 {
     int i;
-    for (i = 0; i <= size - 1; i++)
+    for (i = 0; i < size; i++)
         scanf("%d", &A[i]);
 }
 void display(int size)
 {
     int i;
-    for (i = 0; i <= size - 1; i++)
+    for (i = 0; i < size; i++)
         printf("%d\t", A[i]);
 }
-int Partition(int p, int r)
+int Partition(int lb, int ub)
 {
-    int x, i, j, temp, temp1;
-    x = A[r];
-    i = p - 1;
-    for (j = p; j <= r - 1; j++)
+    int pivot, i, j, temp, temp1;
+    pivot = A[lb];
+    int start = lb;
+    int end = ub;
+    while(start < end)
     {
-        if (A[j] <= x)
+        while(A[start] <= pivot)
         {
-            i = i + 1;
-            temp = A[i];
-            A[i] = A[j];
-            A[j] = temp;
+            start++;
+        }
+        while(A[end] > pivot)
+        {
+            end--;
+        }
+        if(start < end)
+        {
+            temp = A[start];
+            A[start] = A[end];
+            A[end] = temp;
         }
     }
-    temp1 = A[i + 1];
-    A[i + 1] = A[r];
-    A[r] = temp1;
-    return i + 1;
+    temp1 = A[lb];
+    A[lb] = A[end];
+    A[end] = temp1;
+    return end;
 }
-void QuickSort(int p, int r)
+void QuickSort(int lb, int ub)
 {
-    int q;
-    if (p < r)
+    int loc;
+    if (lb < ub)
     {
-        q = Partition(p, r);
-        QuickSort(p, q - 1);
-        QuickSort(q + 1, r);
+        loc = Partition(lb, ub);
+        QuickSort(lb, loc - 1);
+        QuickSort(loc + 1, ub);
     }
     count++;
 }
@@ -51,15 +58,14 @@ int main()
 {
     printf("Enter number of elements: ");
     scanf("%d", &n);
-    printf("Enter the elements:\n");
+    printf("\nEnter the elements:\n");
     input(n);
-    printf("Array before sorting:\n");
+    printf("\nArray before sorting:\n");
     display(n);
     QuickSort(0, n - 1);
     printf("\n");
-    printf("Array after sorting:\n");
+    printf("\nArray after sorting:\n");
     display(n);
-    printf("\n");
-    printf("Number of calls made to the procedure: %d", count);
+    printf("\n\nNumber of calls made to the procedure: %d", count);
     return 0;
 }
