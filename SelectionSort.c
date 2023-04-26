@@ -17,19 +17,19 @@ void displayArray(int n, int array[n])
 }
 void selectionSort(int n, int array[n])
 {
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n - 1; i++)
     {
-        int j = i;
+        int min = i;
         for (int k = i + 1; k < n; k++)
         {
-            if (array[k] < array[j])
+            if (array[k] < array[min])
             {
-                j = k;
+                min = k;
             }
         }
         int temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
+        array[i] = array[min];
+        array[min] = temp;
         printf("\n\nPass Number %d : ", i + 1);
         displayArray(n, array);
     }
