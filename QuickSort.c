@@ -17,7 +17,7 @@ void display(int size)
 }
 int Partition(int lb, int ub)
 {
-    int pivot, i, j, temp, temp1;
+    int pivot, temp, temp1;
     pivot = A[lb];
     int start = lb;
     int end = ub;
