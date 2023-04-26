@@ -34,9 +34,9 @@ void insertionSort(int n, int array[n])
 void main()
 {
     int n;
-    int array[n];
     printf("Enter the array size: ");
     scanf("%d", &n);
+    int array[n];
     readArray(n, array);
     printf("\nBefore swapping the array elements are as follows:\n");
     displayArray(n, array);
