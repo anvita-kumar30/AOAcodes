@@ -72,7 +72,6 @@ void mergeSort(int low, int high)
 }
 int main()
 {
-    int n;
     printf("Enter number of elements: ");
     scanf("%d", &n);
     printf("\nEnter the elements:\n");
